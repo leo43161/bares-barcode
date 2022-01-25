@@ -4,13 +4,13 @@ import Header from './components/common/Header';
 
 function App() {
   return (
-    <div className="container">
+    <div className="col-lg-6 mx-auto border">
       <Header></Header>
       <Route path="/">
-        {(params) => <div>Hello, {params.username}!</div>}
+        {(params) => <h1 className="">Hello, {params.username}!</h1>}
       </Route>
       <Route path="/:categoria">
-          {(params) => <div>Es la categoria: {params.categoria}!</div>}
+          {(params) => <h1>Es la categoria: {params.categoria}!</h1>}
       </Route>
     </div>
   );
