@@ -4,7 +4,8 @@ import { getAll } from '../helpers/crudHelpers';
 
 export default function useComida() {
     const [reloadCategorias, setReloadCategorias] = useState(true);
-    const { categorias, setCategorias } = useContext(Context);
+    const [reloadSubcategorias, setReloadSubcategorias] = useState(true);
+    const { categorias, setCategorias, subcategorias, setSubcategorias } = useContext(Context);
 
     useEffect(() => {
         if (reloadCategorias) {
@@ -13,7 +14,14 @@ export default function useComida() {
         }
     }, [reloadCategorias, setCategorias]);
 
+    useEffect(() => {
+        if (reloadSubcategorias) {
+            getAll("subcategorias", setSubcategorias);
+            setReloadSubcategorias(false);
+        }
+    }, [reloadSubcategorias, setSubcategorias]);
+
     return {
-        categorias, setReloadCategorias
+        categorias, setReloadCategorias, subcategorias, setSubcategorias
     }
 }

@@ -4,7 +4,8 @@ import useCategorias from '../hooks/useCategorias';
 
 export default function Comida() {
     const { comida } = useComida();
-    const { categorias } = useCategorias();
+    const { categorias, subcategorias } = useCategorias();
+    console.log(subcategorias ? subcategorias : []);
     console.log(categorias ? categorias : []);
     console.log(comida ? comida : []);
     return (
