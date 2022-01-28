@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComidaContextProvider } from "./context/ComidaContext";
 import { CategoriasContextProvider } from "./context/CategoriasContext";
+import { MesasContextProvider } from "./context/MesasContext";
 import ReactDOM from 'react-dom';
 import './css/bootstrap.min.css';
 import './index.css';
@@ -10,7 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ComidaContextProvider>
       <CategoriasContextProvider>
-        <App />
+        <MesasContextProvider>
+          <App />
+        </MesasContextProvider>
       </CategoriasContextProvider>
     </ComidaContextProvider>
   </React.StrictMode>,

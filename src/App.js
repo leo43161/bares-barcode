@@ -1,9 +1,9 @@
 import './App.css';
-import { Route } from "wouter";
+import { Route, Switch } from "wouter";
 import Header from './components/common/Header';
 import { useState } from 'react';
 import Comida from './pages/Comida';
-
+import Search from './components/Search';
 
 function App() {
   const [inputSearch, setInputSearch] = useState("");
@@ -20,15 +20,18 @@ function App() {
     }
   }
   return (
-    <div className="col-lg-6 mx-auto border">
-      <Header setInputSearch={setInputSearch} inputSearch={inputSearch} searchHandler={searchHandler}></Header>
-      <Route path="/">
-        <Comida></Comida>
-      </Route>
-      <Route path="/:categoria">
-        {(params) => <h1>Es la categoria: {params.categoria}!</h1>}
-      </Route>
-    </div>
+    <Switch>
+      <div className="col-lg-6 mx-auto">
+        <Header></Header>
+        <Search setInputSearch={setInputSearch} inputSearch={inputSearch} searchHandler={searchHandler}></Search>
+        <Route path="/">
+          <Comida></Comida>
+        </Route>
+        <Route path="/:categoria">
+          {(params) => <h1>Es la categoria: {params.categoria}!</h1>}
+        </Route>
+      </div>
+    </Switch>
   );
 }
 
