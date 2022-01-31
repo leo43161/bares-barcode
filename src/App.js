@@ -1,10 +1,12 @@
 import './App.css';
+import './css/Components.css';
 import { Route, Switch, useRoute } from "wouter";
 import Header from './components/common/Header';
 import useMesas from './hooks/useMesas';
 import { useState } from 'react';
 import Comida from './pages/Comida';
 import Search from './components/Search';
+import Categorias from './pages/Categorias';
 
 function App() {
   const [inputSearch, setInputSearch] = useState("");
@@ -39,7 +41,7 @@ function App() {
               </div>
               : !mesa.disponible ?
                 <h1>No disponible</h1> :
-                <h2>Mesa disponible</h2>
+                <Categorias></Categorias>
           }}
         </Route>
       </div>
