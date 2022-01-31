@@ -7,7 +7,7 @@ export default function Header() {
                 <div className="text-center text-menu-title mb-1" onClick={() => {
                     console.log('Home')
                 }}>
-                    <h1 className="mb-2 title-neon">Miamee</h1>
+                    <h1 className="mb-3 title-neon">Miamee</h1>
                 </div>
             </div>
             

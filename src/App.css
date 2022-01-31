@@ -4,3 +4,7 @@ body {
   --color-bg-barcode: #e3e1ed;
   background-color: var(--color-bg-barcode);
 }
+
+.bg-color {
+  background-color: var(--color-bg-barcode);
+}

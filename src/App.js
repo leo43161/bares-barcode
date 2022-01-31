@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Comida from './pages/Comida';
 import Search from './components/Search';
 import Categorias from './pages/Categorias';
+import NavCategorias from './components/NavCategorias';
 
 function App() {
   const [inputSearch, setInputSearch] = useState("");
@@ -43,6 +44,13 @@ function App() {
                 <h1>No disponible</h1> :
                 <Categorias></Categorias>
           }}
+        </Route>
+        <Route path="/:mesa/:categoria">
+          {({ categoria }) => <>
+            <NavCategorias categoria={categoria}></NavCategorias>
+            <Comida categoria={categoria}></Comida>
+          </>}
+
         </Route>
       </div>
     </Switch>
