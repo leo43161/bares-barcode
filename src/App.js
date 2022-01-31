@@ -28,7 +28,7 @@ function App() {
   }
   return (
     <Switch>
-      <div className="col-lg-6 mx-auto h-100">
+      <div className="col-lg-6 mx-auto h-100 px-2">
         <Header></Header>
         {mesa ? mesa.disponible && <Search setInputSearch={setInputSearch} inputSearch={inputSearch} searchHandler={searchHandler}></Search> : null}
         <Route path="/">

@@ -13,12 +13,11 @@ export default function NavCategorias({ categoria }) {
   }
   return (
     <div className="pt-1">
-
       <div className="position-relative d-flex justify-content-around">
         <div className="d-flex justify-content-between flex-nowrap px-2 py-1 overflow-auto navbar-category" onScroll={scrollHandler}>
           {positionScroll !== 0 ? <div className="degradate-navbar-left top-0">
           </div> : null}
-          <button className="d-flex border-0 position-relative justify-content-center align-items-center border pe-2 rounded-pill bg-color">
+          <button className="d-flex border-0 position-relative justify-content-center align-items-center border pe-2 rounded-pill bg-color" onClick={()=>setLocation("./")}>
             <img src={process.env.PUBLIC_URL + '/icons/home-solid.svg'} className="text-dark" style={{ width: "20px" }} alt="" />
           </button>
           {categorias.map((value, idx) => (
