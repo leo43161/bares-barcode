@@ -22,7 +22,7 @@ function App() {
     <Switch>
       <div className="col-lg-6 mx-auto h-100 px-2">
         <Header></Header>
-        {mesa ? mesa.disponible && <Search setInputSearch={setInputSearch} inputSearch={inputSearch} searchHandler={searchHandler}></Search> : null}
+        <Search setInputSearch={setInputSearch} inputSearch={inputSearch} searchHandler={searchHandler}></Search>
         <Route path="/">
           <Comida></Comida>
         </Route>
@@ -35,7 +35,7 @@ function App() {
               : !mesa.disponible ?
                 <h1>No disponible</h1> : inputSearch.trim() !== "" ?
                   <>
-                    <NavCategorias></NavCategorias>
+                    <NavCategorias setInputSearch={setInputSearch}></NavCategorias>
                     <Comida inputSearch={inputSearch}></Comida>
                   </>
                   : <Categorias></Categorias>
@@ -43,7 +43,7 @@ function App() {
         </Route>
         <Route path="/:mesa/:categoria">
           {({ categoria }) => <>
-            <NavCategorias categoria={categoria}></NavCategorias>
+            <NavCategorias categoria={categoria} setInputSearch={setInputSearch}></NavCategorias>
             <Comida categoria={categoria} inputSearch={inputSearch}></Comida>
           </>}
         </Route>
