@@ -11,6 +11,17 @@ export default function useComida() {
             return value.categoria.includes(categoria) && value.visible;
         });
         return _comidas;
+    }, [comida]);
+
+    const comidaSearch = useCallback((valor) => {
+        if (valor.trim() !== "") {
+            const _comidas = comida.filter((comida) => {
+                return comida.nombre.toLowerCase().includes(valor) || comida.descripcion.toLowerCase().includes(valor);
+            });
+            return _comidas;
+        } else {
+            return [];
+        }
     }, [comida])
 
     useEffect(() => {
@@ -21,6 +32,6 @@ export default function useComida() {
     }, [reloadComida, setComida]);
 
     return {
-        comida, setReloadComida, comidaFilter
+        comida, setReloadComida, comidaFilter, comidaSearch
     }
 }

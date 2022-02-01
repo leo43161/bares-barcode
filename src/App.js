@@ -1,6 +1,6 @@
 import './App.css';
 import './css/Components.css';
-import { Route, Switch, useRoute } from "wouter";
+import { Route, Switch, useRoute, useLocation } from "wouter";
 import Header from './components/common/Header';
 import useMesas from './hooks/useMesas';
 import { useState } from 'react';
@@ -17,14 +17,6 @@ function App() {
   const searchHandler = (e) => {
     const valor = e.target.value.toLowerCase();
     setInputSearch(valor);
-    if (valor.trim() !== "") {
-      /* const _comidaFilter = comida.filter((comida) => {
-          return comida.nombre.toLowerCase().includes(valor) || comida.descripcion.toLowerCase().includes(valor);
-      });
-      setComidaSearch(_comidaFilter); */
-    } else {
-      /* setComidaSearch([]); */
-    }
   }
   return (
     <Switch>
@@ -41,16 +33,19 @@ function App() {
                 <div className="d-flex justify-content-around align-items-center h-100 text-menu-title title-neon h2">Cargando...</div>
               </div>
               : !mesa.disponible ?
-                <h1>No disponible</h1> :
-                <Categorias></Categorias>
+                <h1>No disponible</h1> : inputSearch.trim() !== "" ?
+                  <>
+                    <NavCategorias></NavCategorias>
+                    <Comida inputSearch={inputSearch}></Comida>
+                  </>
+                  : <Categorias></Categorias>
           }}
         </Route>
         <Route path="/:mesa/:categoria">
           {({ categoria }) => <>
             <NavCategorias categoria={categoria}></NavCategorias>
-            <Comida categoria={categoria}></Comida>
+            <Comida categoria={categoria} inputSearch={inputSearch}></Comida>
           </>}
-
         </Route>
       </div>
     </Switch>

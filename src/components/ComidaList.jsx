@@ -10,7 +10,6 @@ export default function ComidaList({ comidas }) {
         500: 2,
         390: 1
     };
-    console.log(comidas);
     return (
         <Masonry
             breakpointCols={breakpointColumnsObj}
