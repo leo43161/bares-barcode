@@ -1,4 +1,3 @@
-
 .menu-bold {
     font-weight: 700;
 }
@@ -27,6 +26,8 @@
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     background-color: var(--color-secondary-barcode);
 }
+
+/*  */
 
 /* NavbarCategory */
 
@@ -59,3 +60,38 @@
     position: absolute;
     z-index: 1000;
 }
+
+/* ComidaList */
+
+.accordion-button, .accordion-header{
+    border-radius: 13px!important;
+}
+
+.card-comida {
+    border-radius: 13px;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: all .63s ease;
+}
+
+.my-masonry-grid {
+    display: -webkit-box;
+    /* Not needed if autoprefixing */
+    display: -ms-flexbox;
+    /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -20px;
+    /* gutter size offset */
+    width: auto;
+}
+
+.my-masonry-grid_column {
+    padding-left: 20px;
+    /* gutter size */
+    background-clip: padding-box;
+}
+
+/*  */
