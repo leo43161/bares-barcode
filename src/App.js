@@ -1,6 +1,6 @@
 import './App.css';
 import './css/Components.css';
-import { Route, Switch, useRoute, useLocation } from "wouter";
+import { Route, Switch, useRoute } from "wouter";
 import Header from './components/common/Header';
 import useMesas from './hooks/useMesas';
 import { useState } from 'react';

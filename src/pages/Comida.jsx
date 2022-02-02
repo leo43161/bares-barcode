@@ -5,7 +5,7 @@ import useComida from '../hooks/useComida';
 import useCategorias from '../hooks/useCategorias';
 
 export default function Comida({ categoria, inputSearch }) {
-    const { comidaFilter, comidaSearch } = useComida();
+    const { comidaFilter, comidaSearch, comidaSubFilter } = useComida();
     const { subcategoriaFilter } = useCategorias();
     const comidas = inputSearch.trim() !== "" ? comidaSearch(inputSearch) : comidaFilter(categoria);
     const subcategorias = inputSearch.trim() !== "" ? [] : subcategoriaFilter(categoria);
@@ -16,12 +16,18 @@ export default function Comida({ categoria, inputSearch }) {
                 <>
                     {subcategorias.length > 0 ? (
                         <Accordion className="pb-2" flush>
-                            <Accordion.Item eventKey={1} className="mb-3 bg-transparent border-0" key={1}>
-                                <Accordion.Header className="shadow h1"><span className="fw-bold">{"titulo"}</span></Accordion.Header>
-                                <Accordion.Body className="bg-transparent px-0 pb-1 pt-0">
-                                    <ComidaList comidas={comidas}></ComidaList>
-                                </Accordion.Body>
-                            </Accordion.Item>
+                            {subcategorias.map((value) => {
+                                const comidaSub = comidaSubFilter(value._id);
+                                return (
+                                    <Accordion.Item eventKey={value._id} className="mb-3 bg-transparent border-0" key={value._id}>
+                                        <Accordion.Header className="shadow h1"><span className="fw-bold">{value.titulo}</span></Accordion.Header>
+                                        <Accordion.Body className="bg-transparent px-0 pb-1 pt-0">
+                                            <ComidaList comidas={comidaSub}></ComidaList>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                );
+                            })}
+
                         </Accordion>
                     ) : <ComidaList comidas={comidas}></ComidaList>}
                 </>

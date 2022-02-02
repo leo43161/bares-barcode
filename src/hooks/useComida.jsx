@@ -13,6 +13,13 @@ export default function useComida() {
         return _comidas;
     }, [comida]);
 
+    const comidaSubFilter = useCallback((subcategoria) => {
+        const _comidas = comida.filter((value) => {
+            return value.subcategoria === subcategoria && value.visible;
+        });
+        return _comidas;
+    }, [comida]);
+
     const comidaSearch = useCallback((valor) => {
         if (valor.trim() !== "") {
             const _comidas = comida.filter((comida) => {
@@ -32,6 +39,6 @@ export default function useComida() {
     }, [reloadComida, setComida]);
 
     return {
-        comida, setReloadComida, comidaFilter, comidaSearch
+        comida, setReloadComida, comidaFilter, comidaSearch, comidaSubFilter
     }
 }
