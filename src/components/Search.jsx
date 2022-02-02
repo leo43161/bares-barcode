@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default function Search({ inputSearch, setInputSearch, searchHandler }) {
+export default function Search({ inputSearch, setInputSearch }) {
+    const searchHandler = (e) => {
+    const valor = e.target.value.toLowerCase();
+    setInputSearch(valor);
+  }
     return (
         <div className="position-relative">
             <input className={`form-control rounded-pill`} id="nombre" value={inputSearch} name="nombre" type="text" onChange={searchHandler} placeholder="Sandwich de milanesa, hamburguesa..." />

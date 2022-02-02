@@ -14,26 +14,22 @@ function App() {
   const { mesaMatch } = useMesas();
   const [match, params] = useRoute("/:mesa");
   const mesa = match ? mesaMatch(params.mesa) : null;
-  const searchHandler = (e) => {
-    const valor = e.target.value.toLowerCase();
-    setInputSearch(valor);
-  }
   return (
     <Switch>
-      <div className="col-lg-6 mx-auto h-100 px-2">
+      <div className="col-lg-6 mx-auto px-2 h-100">
         <Header></Header>
-        <Search setInputSearch={setInputSearch} inputSearch={inputSearch} searchHandler={searchHandler}></Search>
+        <Search setInputSearch={setInputSearch} inputSearch={inputSearch}></Search>
         <Route path="/">
           <Comida></Comida>
         </Route>
         <Route path="/:mesa">
           {() => {
             return !mesa ?
-              <div className="barcode my-auto h-100">
-                <div className="d-flex justify-content-around align-items-center h-100 text-menu-title title-neon h2">Cargando...</div>
+              <div className="barcode my-auto">
+                <div className="d-flex justify-content-around align-items-center text-menu-title title-neon h2">Cargando...</div>
               </div>
               : !mesa.disponible ?
-                <h1>No disponible</h1> : inputSearch.trim() !== "" ?
+                <div className="text-menu-title title-neon h2 text-center">No disponible</div> : inputSearch.trim() !== "" ?
                   <>
                     <NavCategorias setInputSearch={setInputSearch}></NavCategorias>
                     <Comida inputSearch={inputSearch}></Comida>
@@ -42,10 +38,12 @@ function App() {
           }}
         </Route>
         <Route path="/:mesa/:categoria">
-          {({ categoria }) => <>
-            <NavCategorias categoria={categoria} setInputSearch={setInputSearch}></NavCategorias>
-            <Comida categoria={categoria} inputSearch={inputSearch}></Comida>
-          </>}
+          {({ categoria }) => (
+            <>
+              <NavCategorias categoria={categoria} setInputSearch={setInputSearch}></NavCategorias>
+              <Comida categoria={categoria} inputSearch={inputSearch}></Comida>
+            </>
+          )}
         </Route>
       </div>
     </Switch>
