@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ComidaList from '../components/ComidaList';
+import { useLocation } from "wouter";
+import { getMesa } from '../helpers/crudHelpers';
 import Accordion from 'react-bootstrap/Accordion';
 import useComida from '../hooks/useComida';
 import useCategorias from '../hooks/useCategorias';
 
 export default function Comida({ categoria, inputSearch }) {
     const { comidaFilter, comidaSearch, comidaSubFilter } = useComida();
+    const [location, setLocation] = useLocation();
     const { subcategoriaFilter } = useCategorias();
     const comidas = inputSearch.trim() !== "" ? comidaSearch(inputSearch) : comidaFilter(categoria);
     const subcategorias = inputSearch.trim() !== "" ? [] : subcategoriaFilter(categoria);
-    console.log(comidas)
+
+    useEffect(() => {
+        const mesaMatch = async () => {
+            const _mesa = await getMesa(location.split("/")[1]);
+            if (!_mesa) {
+                setLocation("/error");
+            } else if (!_mesa.disponible) {
+                setLocation("/error");
+            }
+        }
+        mesaMatch();
+    }, [location, setLocation]);
     return (
         <div className="mt-2">
             {inputSearch.trim() !== "" ? <ComidaList comidas={comidas}></ComidaList> :

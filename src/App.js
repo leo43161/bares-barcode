@@ -19,8 +19,8 @@ function App() {
       <div className="col-lg-6 mx-auto px-2 h-100">
         <Header></Header>
         <Search setInputSearch={setInputSearch} inputSearch={inputSearch}></Search>
-        <Route path="/">
-          <Comida></Comida>
+        <Route path="/error">
+          <div>Esta mesa no se pudo encontrar</div>
         </Route>
         <Route path="/:mesa">
           {() => {
