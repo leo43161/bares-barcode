@@ -18,9 +18,9 @@ function App() {
     <Switch>
       <div className="col-lg-6 mx-auto px-2 h-100">
         <Header></Header>
-        <Search setInputSearch={setInputSearch} inputSearch={inputSearch}></Search>
-        <Route path="/error">
-          <div>Esta mesa no se pudo encontrar</div>
+        {mesa ? <Search setInputSearch={setInputSearch} inputSearch={inputSearch}></Search> : null}
+        <Route path="/mesa404">
+          <div className="d-flex justify-content-around align-items-center text-menu-title title-neon h2">Mesa no disponible</div>
         </Route>
         <Route path="/:mesa">
           {() => {
@@ -40,6 +40,7 @@ function App() {
         <Route path="/:mesa/:categoria">
           {({ categoria }) => (
             <>
+              <Search setInputSearch={setInputSearch} inputSearch={inputSearch}></Search>
               <NavCategorias categoria={categoria} setInputSearch={setInputSearch}></NavCategorias>
               <Comida categoria={categoria} inputSearch={inputSearch}></Comida>
             </>

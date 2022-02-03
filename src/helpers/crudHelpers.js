@@ -15,7 +15,6 @@ export const getAll = async (dbTable, setState) => {
 }
 
 export const getMesa = async (mesa) => {
-    console.log(mesa)
     try {
         const response = await fetch(URLServer + 'mesas/check/' + mesa);
         const result = await response.json();
@@ -25,7 +24,6 @@ export const getMesa = async (mesa) => {
             return result;
         }
     } catch (error) {
-        console.log(error);
         return null;
     }
 }
