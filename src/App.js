@@ -42,7 +42,7 @@ function App() {
             <>
               <Search setInputSearch={setInputSearch} inputSearch={inputSearch}></Search>
               <NavCategorias categoria={categoria} setInputSearch={setInputSearch}></NavCategorias>
-              <Comida categoria={categoria} inputSearch={inputSearch}></Comida>
+              <Comida categoria={categoria} inputSearch={inputSearch} setInputSearch={setInputSearch}></Comida>
             </>
           )}
         </Route>

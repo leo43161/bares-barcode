@@ -7,7 +7,7 @@ import useComida from '../hooks/useComida';
 import useSwipe from '../hooks/useSwipe';
 import useCategorias from '../hooks/useCategorias';
 
-export default function Comida({ categoria, inputSearch }) {
+export default function Comida({ categoria, inputSearch, setInputSearch }) {
     const { comidaFilter, comidaSearch, comidaSubFilter } = useComida();
     const [location, setLocation] = useLocation();
     const { subcategoriaFilter, categorias } = useCategorias();
@@ -29,6 +29,7 @@ export default function Comida({ categoria, inputSearch }) {
 
 
     const swipemMove = (direction) => {
+        setInputSearch("");
         const categoria = categorias.find((value) => {
             return value._id === location.split("/")[2];
         });
