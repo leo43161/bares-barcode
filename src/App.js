@@ -20,7 +20,7 @@ function App() {
         <Header></Header>
         {mesa ? <Search setInputSearch={setInputSearch} inputSearch={inputSearch}></Search> : null}
         <Route path="/mesa404">
-          <div className="d-flex justify-content-around align-items-center text-menu-title title-neon h2">Mesa no disponible</div>
+          <div className="text-menu-title title-neon h2 text-center">Mesa disponible</div>
         </Route>
         <Route path="/:mesa">
           {() => {

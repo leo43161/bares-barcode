@@ -4,12 +4,14 @@ import { useLocation } from "wouter";
 import { getMesa } from '../helpers/crudHelpers';
 import Accordion from 'react-bootstrap/Accordion';
 import useComida from '../hooks/useComida';
+import useSwipe from '../hooks/useSwipe';
 import useCategorias from '../hooks/useCategorias';
 
 export default function Comida({ categoria, inputSearch }) {
     const { comidaFilter, comidaSearch, comidaSubFilter } = useComida();
     const [location, setLocation] = useLocation();
-    const { subcategoriaFilter } = useCategorias();
+    const { subcategoriaFilter, categorias } = useCategorias();
+    const { handleTouchStart, handleTouchMove } = useSwipe();
     const comidas = inputSearch.trim() !== "" ? comidaSearch(inputSearch) : comidaFilter(categoria);
     const subcategorias = inputSearch.trim() !== "" ? [] : subcategoriaFilter(categoria);
 
@@ -24,8 +26,24 @@ export default function Comida({ categoria, inputSearch }) {
         }
         mesaMatch();
     }, [location, setLocation]);
+
+
+    const swipemMove = (direction) => {
+        const categoria = categorias.find((value) => {
+            return value._id === location.split("/")[2];
+        });
+        const indexC = categorias.indexOf(categoria);
+        const indexD = direction ? indexC - 1 : indexC + 1;
+        if (indexD === -1) {
+            setLocation(`/${location.split("/")[1]}`);
+        } else if (indexD < categorias.length) {
+            setLocation(`/${location.split("/")[1]}/${categorias[indexD]._id}`);
+        }
+    }
+
+
     return (
-        <div className="mt-2">
+        <div className="mt-2 border border-dark h-100" onTouchStart={handleTouchStart} onTouchMove={(e) => handleTouchMove(e, swipemMove)}>
             {inputSearch.trim() !== "" ? <ComidaList comidas={comidas}></ComidaList> :
                 <>
                     {subcategorias.length > 0 ? (
