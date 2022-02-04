@@ -43,7 +43,7 @@ export default function Comida({ categoria, inputSearch }) {
 
 
     return (
-        <div className="mt-2 border border-dark h-100" onTouchStart={handleTouchStart} onTouchMove={(e) => handleTouchMove(e, swipemMove)}>
+        <div className="mt-2 h-100" onTouchStart={handleTouchStart} onTouchMove={(e) => handleTouchMove(e, swipemMove)}>
             {inputSearch.trim() !== "" ? <ComidaList comidas={comidas}></ComidaList> :
                 <>
                     {subcategorias.length > 0 ? (
