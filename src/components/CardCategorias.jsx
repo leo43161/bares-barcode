@@ -6,7 +6,7 @@ export default function CardCategorias({ categoria }) {
     const [location, setLocation] = useLocation();
     const { titulo, icono, _id } = categoria;
     return (
-        <div className="card card-category" onClick={() => setLocation(`/${location.split("/")[1]}/${_id}`)}>
+        <div className="card card-category h-100" onClick={() => setLocation(`/${location.split("/")[1]}/${_id}`)}>
             <div className="card-body d-flex flex-column align-items-center justify-content-between">
                 <div className="p-4 p-lg-2">
                     <img className="img-fluid" src={URLImg + BAR + "/" + icono} alt={titulo} />

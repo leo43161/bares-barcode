@@ -19,9 +19,9 @@ export default function Comida({ categoria, inputSearch }) {
         const mesaMatch = async () => {
             const _mesa = await getMesa(location.split("/")[1]);
             if (!_mesa) {
-                setLocation("/error");
+                setLocation("/mesa404");
             } else if (!_mesa.disponible) {
-                setLocation("/error");
+                setLocation("/mesa404");
             }
         }
         mesaMatch();
@@ -43,7 +43,11 @@ export default function Comida({ categoria, inputSearch }) {
 
 
     return (
-        <div className="mt-2 h-100" onTouchStart={handleTouchStart} onTouchMove={(e) => handleTouchMove(e, swipemMove)}>
+        <div className="mt-2 h-100 comida-list"
+            style={{ minHeight: "55vh" }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={(e) => handleTouchMove(e, swipemMove)}
+        >
             {inputSearch.trim() !== "" ? <ComidaList comidas={comidas}></ComidaList> :
                 <>
                     {subcategorias.length > 0 ? (
