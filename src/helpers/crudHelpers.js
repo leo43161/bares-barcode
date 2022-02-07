@@ -27,3 +27,28 @@ export const getMesa = async (mesa) => {
         return null;
     }
 }
+
+export const fetchAlert = async (bool, id, state) => {
+    try {
+        const cabecera = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                bool,
+                id
+            }),
+        };
+
+        const resultado = await fetch(URLServer + "mesas/" + state, cabecera);
+
+        if (resultado.status === 201) {
+            return resultado;
+        } else {
+            return resultado;
+        }
+    } catch (error) {
+        return null;
+    }
+}

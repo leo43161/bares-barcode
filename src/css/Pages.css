@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Akronim&family=Damion&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    --color-primary-barcode: #4DC0BC;
+    --color-secondary-barcode: #ffce2b;
+    --color-bg-barcode: #e3e1ed;
+}
+
+.text-menu-title {
+    font-family: 'Damion', cursive;
+    color: var(--color-primary-barcode);
+    border-bottom: 2px solid var(--color-secondary-barcode);
+    cursor: pointer;
+}
+
+.text-menu-title h1 {
+    font-size: 100px;
+}
+
+/* .btn-position */
+
+.btn-position {
+    z-index: 500;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn-cuenta {
+    width: 90px;
+    height: 60px;
+    font-size: 12px;
+    background-color: var(--color-secondary-barcode);
+    color: black;
+    border: 2px solid var(--color-primary-barcode);
+    border-radius: 13px;
+    box-shadow: 0px 1px 12px var(--color-primary-barcode);
+}
+
+.btn-alert {
+    width: 120px;
+    height: 45px;
+    font-size: 25px;
+    color: var(--color-primary-barcode);
+    border: 2px solid var(--color-primary-barcode);
+    border-radius: 13px;
+    box-shadow: 0px 1px 12px var(--color-primary-barcode);
+}
+
+.btn-mozo {
+    width: 90px;
+    height: 60px;
+    font-size: 12px;
+    background-color: var(--color-primary-barcode);
+    color: var(--color-bg-barcode);
+    border: 2px solid var(--color-primary-barcode);
+    border-radius: 13px;
+    box-shadow: 0px 1px 12px var(--color-primary-barcode);
+}
