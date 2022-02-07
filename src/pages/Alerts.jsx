@@ -3,7 +3,7 @@ import Alert from 'react-bootstrap/Alert';
 import { fetchAlert } from '../helpers/crudHelpers';
 import "../css/Pages.css";
 
-export default function Alerts() {
+export default function Alerts({ mesa }) {
     const [alert, setAlert] = useState(false);
     const [showAdvert, setShowAdvert] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
@@ -15,7 +15,7 @@ export default function Alerts() {
                 setShowAdvert(false);
             }, 3500);
         } else {
-            const result = await fetchAlert(true, "idMesa", state);
+            const result = await fetchAlert(true, mesa, state);
             if (result.status === 200) {
                 setAlert(true);
                 handleHidde();
@@ -41,20 +41,20 @@ export default function Alerts() {
                     Se debe esperar 30 segundos antes de volver a llamar.
                 </p>
             </Alert>}
-            <div className={`justify-content-center d-flex w-100 align-items-center btn-position {alert ? "disabled" : null}`}>
-                {!showButtons ? <div className={`btn-alert d-flex flex-column justify-content-center align-items-center ${alert ? "disabled" : null} mb-2`} onClick={handleShow} disabled>
+            <div className={`justify-content-center justify-content-lg-end d-flex w-100 align-items-center btn-position ${alert ? "disabled" : ""}`}>
+                {!showButtons ? <div className={`btn-alert d-flex flex-column justify-content-center align-items-center ${alert ? "disabled" : ""} mb-lg-3 mb-2 me-lg-3`} onClick={handleShow} disabled>
                     <img src={process.env.PUBLIC_URL + '/icons/concierge-bell-solid.png'} className="text-dark" style={{ width: "23px" }} alt="" />
                 </div> : null}
 
                 {showButtons ?
-                    <div className="d-flex justify-content-evenly mb-2 w-100 btn-mesa">
+                    <div className="d-flex justify-content-evenly mb-2 col-12 col-lg-2 btn-mesa position-relative">
                         <div className={`btn-cuenta d-flex flex-column justify-content-between align-items-center p-2 text-center ${alert ? "disabled" : null}`} onClick={() => handleAlert("cuenta")}>
                             <img src={process.env.PUBLIC_URL + '/icons/receipt-solid.svg'} className="text-dark" style={{ width: "17px" }} alt="" />
                             <span>Pedir cuenta</span>
                         </div>
-                        <div className="position-absolute top-0 start-50 translate-middle" onClick={handleHidde}>
-                            <div className="p-1 btn-close-mesa">
-                                <img src={process.env.PUBLIC_URL + '/icons/angle-down-solid.svg'} className="text-dark" style={{ width: "15px" }} alt="" />
+                        <div className="position-absolute top-0 start-50 translate-middle pb-lg-3" onClick={handleHidde} style={{ width: "17px" }}>
+                            <div className="btn-close-mesa">
+                                <img src={process.env.PUBLIC_URL + '/icons/angle-down-solid.svg'} className="text-dark" style={{ cursor: "pointer", width: "15px" }} alt="" />
                             </div>
                         </div>
                         <div className={`btn-mozo d-flex flex-column justify-content-between align-items-center p-2 text-center ${alert ? "disabled" : null}`} onClick={() => handleAlert("alert")}>

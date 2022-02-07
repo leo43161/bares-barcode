@@ -20,7 +20,7 @@ function App() {
       <div className="col-lg-6 mx-auto px-2 h-100">
         <Header></Header>
         {mesa ? <Search setInputSearch={setInputSearch} inputSearch={inputSearch}></Search> : null}
-        {mesa ? <Alerts></Alerts> : null}
+        {mesa ? <Alerts mesa={mesa._id}></Alerts> : null}
         <Route path="/mesa404">
           <div className="text-menu-title title-neon h2 text-center">Mesa disponible</div>
         </Route>
