@@ -16,10 +16,6 @@ export default function ComidaList({ comidas }) {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column">
             {comidas.map((value, idx) => (<div key={idx}><CardComida comida={value}></CardComida></div>))}
-            {/* <CardComida></CardComida>
-            <CardComida></CardComida>
-            <CardComida></CardComida>
-            <CardComida></CardComida> */}
         </Masonry>
     );
 }
