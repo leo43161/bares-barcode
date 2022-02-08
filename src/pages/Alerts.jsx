@@ -49,16 +49,16 @@ export default function Alerts({ mesa }) {
                 {showButtons ?
                     <div className="d-flex justify-content-evenly mb-2 col-12 col-lg-2 btn-mesa position-relative">
                         <div className={`btn-cuenta d-flex flex-column justify-content-between align-items-center p-2 text-center ${alert ? "disabled" : null}`} onClick={() => handleAlert("cuenta")}>
-                            <img src={process.env.PUBLIC_URL + '/icons/receipt-solid.svg'} className="text-dark" style={{ width: "17px" }} alt="" />
+                            <img src={process.env.PUBLIC_URL + '/icons/receipt-solid.svg'} className="text-dark" style={{ width: "17px" }} alt="cuenta-icono" />
                             <span>Pedir cuenta</span>
                         </div>
                         <div className="position-absolute top-0 start-50 translate-middle pb-lg-3" onClick={handleHidde} style={{ width: "17px" }}>
                             <div className="btn-close-mesa">
-                                <img src={process.env.PUBLIC_URL + '/icons/angle-down-solid.svg'} className="text-dark" style={{ cursor: "pointer", width: "15px" }} alt="" />
+                                <img src={process.env.PUBLIC_URL + '/icons/angle-down-solid.svg'} className="text-dark" style={{ cursor: "pointer", width: "15px" }} alt="close" />
                             </div>
                         </div>
                         <div className={`btn-mozo d-flex flex-column justify-content-between align-items-center p-2 text-center ${alert ? "disabled" : null}`} onClick={() => handleAlert("alert")}>
-                            <img src={process.env.PUBLIC_URL + '/icons/hand-paper-solid.png'} className="text-light" style={{ width: "20px" }} alt="" />
+                            <img src={process.env.PUBLIC_URL + '/icons/hand-paper-solid.png'} className="text-light" style={{ width: "20px" }} alt="llamar-mozo" />
                             <span>Llamar</span>
                         </div>
                     </div> : null}
