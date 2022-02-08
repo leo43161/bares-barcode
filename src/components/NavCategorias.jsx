@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from "wouter";
 import useCategorias from '../hooks/useCategorias';
 
@@ -6,6 +6,13 @@ export default function NavCategorias({ categoria, setInputSearch }) {
   const { categorias } = useCategorias();
   const [positionScroll, setPositionScroll] = useState(0);
   const [location, setLocation] = useLocation();
+  const myRef = useRef(null);
+
+  useEffect(() => {
+    if (myRef.current) {
+      myRef.current.scrollIntoView({ inline: "center" });
+    }
+  }, [categoria])
 
   const scrollHandler = (e) => {
     let scrollPorcentage = 100 * e.target.scrollLeft / (e.target.scrollWidth - e.target.clientWidth);
@@ -26,7 +33,7 @@ export default function NavCategorias({ categoria, setInputSearch }) {
             <img src={process.env.PUBLIC_URL + '/icons/home-solid.svg'} className="text-dark" style={{ width: "20px" }} alt="" />
           </button>
           {categorias.map((value, idx) => (
-            <button key={idx} onClick={() => {
+            <button ref={value._id === categoria ? myRef : null} key={idx} onClick={() => {
               setInputSearch("");
               setLocation(`/${location.split("/")[1]}/${value._id}`);
             }} className={`d-flex border-0 position-relative justify-content-center align-items-center border px-2 rounded-pill bg-color ${value._id === categoria ? "active" : ""}`} autoFocus={value._id === categoria}>
